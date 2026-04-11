@@ -1,4 +1,4 @@
 [workspace]
 
 resolver = "3"
-members = ["ravm"]
+members = ["ravm", "ravm_args", "ravm_file", "ravm_reader", "ravm_runner"]
