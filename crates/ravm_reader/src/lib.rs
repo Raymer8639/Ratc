@@ -13,7 +13,7 @@ pub fn reader(file: String) -> Result<()> {
             file.version.clone()
         ));
     }
-    dbg!(file);
+    ravm_runner::runner(file.lines)?;
 
     Ok(())
 }

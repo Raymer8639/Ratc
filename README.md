@@ -12,8 +12,10 @@ The language of the name is "ra"'s runner
   ```
 - Building and install
   ```bash
-  cargo install --path ravm
+  ./install.sh  
   ```
   
-# Usage
-ravm [OPTION] [FILE]
+# Deletion
+```bash
+./uninstall.sh
+```

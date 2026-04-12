@@ -1,8 +1,10 @@
 [package]
-name = "ravm_runner"
+name = "rac_reader"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-ra_file.path = "../ra_file"
+ra_file = { workspace = true }
 anyhow = { workspace = true }
+unescape = "0.1.0"
+regex = "1.12.3"

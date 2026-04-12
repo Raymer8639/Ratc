@@ -2,7 +2,7 @@ use anyhow::Result;
 use ra_file::{BytecodeFile, OpCode};
 use std::{
     fs::File,
-    io::{BufWriter, Write},
+    io::{BufWriter},
 };
 
 pub fn writer(commands: &[OpCode]) -> Result<()> {

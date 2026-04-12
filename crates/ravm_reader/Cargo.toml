@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-ra_version.path = "../ra_version"
+ravm_runner.path = "../ravm_runner"
+ra_version = { workspace = true }
 ra_file = { workspace = true }
 anyhow = { workspace = true }
 bincode = { workspace = true }

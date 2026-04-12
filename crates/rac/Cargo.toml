@@ -4,10 +4,10 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-rac_args.path = "../rac_args"
-rac_writer.path = "../rac_writer"
-ra_file.path = "../ra_file"
+rac_args = { workspace = true }
+rac_writer = { workspace = true }
+rac_reader.path = "../rac_reader"
 
 clap = { workspace = true, features = ["derive"] }
 anyhow = { workspace = true }
-rustyline = "18.0.0"
+rustyline = { workspace = true }
