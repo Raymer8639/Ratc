@@ -29,6 +29,7 @@ pub fn runner(cmds: Vec<OpCode>) -> Result<()> {
                     stack.push(Value::String(value1 + value2.as_str()));
                 };
             }
+            OpCode::Null => (),
         }
     }
     Ok(())

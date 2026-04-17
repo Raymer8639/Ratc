@@ -1,3 +1,5 @@
+use std::fmt;
+
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
@@ -7,14 +9,17 @@ pub enum Value {
     String(String),
 }
 
-impl Value {
-    pub fn to_string(&self) -> String {
+impl fmt::Display for Value {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            Self::Number(value) => value.to_string(),
-            Self::Bool(value) => value.to_string(),
-            Self::String(value) => (*value).clone(),
+            Self::Number(value) => write!(f, "{}", value),
+            Self::Bool(value) => write!(f, "{}", value),
+            Self::String(value) => write!(f, "{}", value),
         }
     }
+}
+
+impl Value {
     pub fn parse(input: &str) -> Self {
         if let Ok(b) = input.parse::<bool>() {
             return Value::Bool(b);
@@ -31,6 +36,7 @@ pub enum OpCode {
     Push(Value),
     Syscall,
     Add,
+    Null,
 }
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct BytecodeFile {

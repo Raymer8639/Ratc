@@ -6,5 +6,5 @@ edition = "2024"
 [dependencies]
 ra_file = { workspace = true }
 anyhow = { workspace = true }
-unescape = "0.1.0"
-regex = "1.12.3"
+unescape = { workspace = true }
+regex = { workspace = true }
