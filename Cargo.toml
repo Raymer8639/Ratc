@@ -13,9 +13,7 @@ rac_writer = { path = "crates/rac_writer" }
 
 rkyv = "0.8.15"
 anyhow = "1.0.102"
-bincode = "1.3.0"
 clap = "4.6.0"
-serde = "1.0.228"
 rustyline = "18.0.0"
 rac_reader = { path = "crates/rac_reader" }
 ravm_runner = { path = "crates/ravm_runner" }
