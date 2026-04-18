@@ -1,14 +1,14 @@
-# Ravm
-The language of the name is "ra"'s runner
+# Ratc
+Ra's frontend and backend
 
 # Installation
 - Getting the repository
   ```bash
-  git clone https://github.com/Raymer8639/Ravm.git
+  git clone https://github.com/Raymer8639/Ratc.git
   ```
 - Enter the repository
   ```bash
-  cd Ravm
+  cd Ratc
   ```
 - Building and install
   ```bash
