@@ -1,5 +1,5 @@
 # Ratc
-Ra's frontend and backend
+Ra's Toolchain Collection
 
 # Installation
 - Getting the repository
