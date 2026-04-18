@@ -1,0 +1,10 @@
+[package]
+name = "rac_reader"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+ra_file = { workspace = true }
+anyhow = { workspace = true }
+unescape = { workspace = true }
+regex = { workspace = true }

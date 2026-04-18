@@ -1,0 +1,13 @@
+[package]
+name = "rac"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+rac_args = { workspace = true }
+rac_writer = { workspace = true }
+rac_reader = { workspace = true }
+
+clap = { workspace = true, features = ["derive"] }
+anyhow = { workspace = true }
+rustyline = { workspace = true }

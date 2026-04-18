@@ -1,0 +1,12 @@
+[package]
+name = "ravm"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+ravm_args = { workspace = true }
+ravm_reader = { workspace = true }
+
+clap = { workspace = true, features = ["derive"] }
+anyhow = { workspace = true }
+

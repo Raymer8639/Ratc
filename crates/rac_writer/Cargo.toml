@@ -1,0 +1,10 @@
+[package]
+name = "rac_writer"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+ra_version = { workspace = true }
+ra_file = { workspace = true }
+anyhow = { workspace = true }
+rkyv = { workspace = true }

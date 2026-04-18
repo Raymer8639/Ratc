@@ -1,0 +1,8 @@
+[package]
+name = "ravm_runner"
+version = "0.0.1"
+edition = "2024"
+
+[dependencies]
+ra_file = { workspace = true }
+anyhow = { workspace = true }
