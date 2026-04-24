@@ -6,6 +6,7 @@ edition = "2024"
 [dependencies]
 ravm_args = { workspace = true }
 ravm_reader = { workspace = true }
+ravm_runner = { workspace = true }
 
 clap = { workspace = true, features = ["derive"] }
 anyhow = { workspace = true }

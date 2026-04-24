@@ -1,9 +1,9 @@
 use std::{fs::File, io::Read};
 
 use anyhow::{Result, anyhow};
-use ra_file::{ArchivedBytecodeFile, BytecodeFile};
+use ra_file::{ArchivedBytecodeFile, BytecodeFile, OpCode};
 
-pub fn reader(file: String) -> Result<()> {
+pub fn reader(file: String) -> Result<Vec<OpCode>> {
     let mut file = File::open(file)?;
     let mut bytes = vec![];
     file.read_to_end(&mut bytes)?;
@@ -16,7 +16,5 @@ pub fn reader(file: String) -> Result<()> {
             file.version.clone()
         ));
     }
-    ravm_runner::runner(file.lines)?;
-
-    Ok(())
+    Ok(file.lines)
 }

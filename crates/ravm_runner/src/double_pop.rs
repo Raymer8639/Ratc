@@ -37,8 +37,7 @@ pub fn double_pop_string(stack: &mut Vec<Value>, line_number: u32) -> Result<(St
         let top = if let Value::String(value) = _top {
             value
         } else {
-            stack.push(top);
-            return Err(anyhow!("Value type error! At: {line_number}"));
+            _top.to_string()
         };
 
         second_value = top;
@@ -51,8 +50,7 @@ pub fn double_pop_string(stack: &mut Vec<Value>, line_number: u32) -> Result<(St
         let top = if let Value::String(value) = _top {
             value
         } else {
-            stack.push(top);
-            return Err(anyhow!("Value type error! At: {line_number}"));
+            _top.to_string()
         };
         first_value = top;
     }
