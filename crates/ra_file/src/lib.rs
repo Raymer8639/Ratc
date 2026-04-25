@@ -35,6 +35,7 @@ pub enum OpCode {
     Push(Value),
     Syscall,
     Add,
+    Rm,
     Null,
 }
 #[derive(Serialize, Deserialize, Archive, Debug, Clone)]

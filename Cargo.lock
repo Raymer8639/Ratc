@@ -351,18 +351,18 @@ dependencies = [
 
 [[package]]
 name = "ra_file"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "rkyv",
 ]
 
 [[package]]
 name = "ra_version"
-version = "0.0.1"
+version = "0.0.2"
 
 [[package]]
 name = "rac"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "clap",
@@ -374,14 +374,14 @@ dependencies = [
 
 [[package]]
 name = "rac_args"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "clap",
 ]
 
 [[package]]
 name = "rac_reader"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "ra_file",
@@ -391,7 +391,7 @@ dependencies = [
 
 [[package]]
 name = "rac_writer"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "ra_file",
@@ -420,7 +420,7 @@ dependencies = [
 
 [[package]]
 name = "ravm"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "clap",
@@ -431,14 +431,14 @@ dependencies = [
 
 [[package]]
 name = "ravm_args"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "clap",
 ]
 
 [[package]]
 name = "ravm_reader"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "ra_file",
@@ -448,7 +448,7 @@ dependencies = [
 
 [[package]]
 name = "ravm_runner"
-version = "0.0.1"
+version = "0.0.2"
 dependencies = [
  "anyhow",
  "ra_file",

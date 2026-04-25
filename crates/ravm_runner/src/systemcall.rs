@@ -12,12 +12,16 @@ pub fn systemcall(
             let value = if let Some(value) = stack.pop() {
                 value.to_string()
             } else {
-                return Err(anyhow!("No value! At {cmd_number}"));
+                return Err(anyhow!(
+                    "No value! In the {cmd_number}th(st, nd) instruction"
+                ));
             };
             print!("{value}");
         }
         (_, _) => {
-            return Err(anyhow!("Invaild systemcall!"));
+            return Err(anyhow!(
+                "Invaild systemcall! In the {cmd_number}th(st, nd) instruction"
+            ));
         }
     }
     Ok(())

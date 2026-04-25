@@ -14,6 +14,7 @@ pub fn read_cmds(lines: Vec<&str>, cmds: &mut Vec<OpCode>, line_number: &mut usi
         }
         "syscall" => cmds.push(OpCode::Syscall),
         "add" => cmds.push(OpCode::Add),
+        "rm" => cmds.push(OpCode::Rm),
         _ => cmds.push(OpCode::Null),
     }
     Ok(())
