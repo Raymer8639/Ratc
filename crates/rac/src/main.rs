@@ -26,7 +26,7 @@ fn main() -> Result<()> {
                         break;
                     }
 
-                    if line.ends_with(';') || is_skiping {
+                    if !line.ends_with(';') || is_skiping {
                         skip_buffer.push_str(line.as_str());
                         line_number -= 1;
 

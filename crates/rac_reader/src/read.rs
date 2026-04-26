@@ -19,7 +19,7 @@ pub fn read(
         *line_number += 1;
         root_line = line?;
         let line = root_line.clone();
-        if line.ends_with(';') || *is_skiping {
+        if !line.ends_with(';') || *is_skiping {
             skip_buffer.push_str(line.as_str());
             *line_number -= 1;
 
