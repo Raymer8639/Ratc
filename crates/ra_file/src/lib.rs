@@ -1,7 +1,8 @@
-use rkyv::{Archive, Deserialize, Serialize};
 use std::fmt;
 
-#[derive(Serialize, Deserialize, Archive, Debug, Clone)]
+use serde::{Deserialize, Serialize};
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Value {
     Number(i32),
     Bool(bool),
@@ -30,14 +31,16 @@ impl Value {
     }
 }
 
-#[derive(Serialize, Deserialize, Archive, Debug, Clone)]
+#[derive(Serialize, Deserialize, Debug, Clone)]
 pub enum OpCode {
     Push(Value),
+    Block(Vec<OpCode>),
     Syscall,
     Add,
+    Rm,
     Null,
 }
-#[derive(Serialize, Deserialize, Archive, Debug, Clone)]
+#[derive(Deserialize, Serialize, Debug, Clone)]
 pub struct BytecodeFile {
     pub lines: Vec<OpCode>,
     pub version: String,

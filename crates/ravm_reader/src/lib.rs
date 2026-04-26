@@ -1,22 +1,23 @@
-use std::{fs::File, io::Read};
+use std::{
+    fs::File,
+    io::{BufReader, Read},
+};
 
 use anyhow::{Result, anyhow};
-use ra_file::{ArchivedBytecodeFile, BytecodeFile};
+use ra_file::{BytecodeFile, OpCode};
 
-pub fn reader(file: String) -> Result<()> {
-    let mut file = File::open(file)?;
+pub fn reader(file: String) -> Result<Vec<OpCode>> {
+    let file = File::open(file)?;
+    let mut reader = BufReader::new(file);
     let mut bytes = vec![];
-    file.read_to_end(&mut bytes)?;
-    let file = rkyv::access::<ArchivedBytecodeFile, rkyv::rancor::Error>(&bytes)?;
-    let file: BytecodeFile = rkyv::deserialize::<BytecodeFile, rkyv::rancor::Error>(file)?;
+    reader.read_to_end(&mut bytes)?;
 
-    if ra_version::RUNNNER_VERSION != file.version {
+    let file: BytecodeFile = postcard::from_bytes(&bytes)?;
+    if ra_version::RUNNER_VERSION != file.version {
         return Err(anyhow!(
             "The VM's version is too old or too new! The exe's version is {}",
             file.version.clone()
         ));
     }
-    ravm_runner::runner(file.lines)?;
-
-    Ok(())
+    Ok(file.lines)
 }

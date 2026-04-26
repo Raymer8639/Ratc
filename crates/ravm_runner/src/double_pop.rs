@@ -23,36 +23,38 @@ pub fn double_pop_number(stack: &mut Vec<Value>, cmd_number: u32) -> Result<(i32
             value
         } else {
             stack.push(top);
-            return Err(anyhow!("Value type error!. At: {cmd_number}"));
+            return Err(anyhow!(
+                "Value type error!. In the {cmd_number}th(st, nd) instruction"
+            ));
         };
         first_value = top;
     }
     Ok((first_value, second_value))
 }
 
-pub fn double_pop_string(stack: &mut Vec<Value>, line_number: u32) -> Result<(String, String)> {
+pub fn double_pop_string(stack: &mut Vec<Value>, cmd_number: u32) -> Result<(String, String)> {
     let (mut first_value, mut second_value) = (String::new(), String::new());
     if let Some(top) = stack.pop() {
         let _top = top.clone();
         let top = if let Value::String(value) = _top {
             value
         } else {
-            stack.push(top);
-            return Err(anyhow!("Value type error! At: {line_number}"));
+            _top.to_string()
         };
 
         second_value = top;
     }
     if second_value.is_empty() {
-        return Err(anyhow!("No value! At: {line_number}"));
+        return Err(anyhow!(
+            "No value! In the {cmd_number}th(st, nd) instruction"
+        ));
     }
     if let Some(top) = stack.pop() {
         let _top = top.clone();
         let top = if let Value::String(value) = _top {
             value
         } else {
-            stack.push(top);
-            return Err(anyhow!("Value type error! At: {line_number}"));
+            _top.to_string()
         };
         first_value = top;
     }

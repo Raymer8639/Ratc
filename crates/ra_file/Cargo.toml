@@ -1,7 +1,8 @@
 [package]
 name = "ra_file"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 
 [dependencies]
-rkyv = { workspace = true }
+postcard = { workspace = true }
+serde = { workspace = true, features = ["derive"] }

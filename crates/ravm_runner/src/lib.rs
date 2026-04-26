@@ -1,4 +1,4 @@
-use anyhow::Result;
+use anyhow::{Result, anyhow};
 use ra_file::{OpCode, Value};
 
 mod double_pop;
@@ -14,6 +14,9 @@ pub fn runner(cmds: Vec<OpCode>) -> Result<()> {
             OpCode::Push(value) => {
                 stack.push(value.clone());
             }
+            OpCode::Block(cmds) => {
+                runner(cmds)?;
+            }
             OpCode::Syscall => {
                 let (first_value, second_value) =
                     double_pop::double_pop_number(&mut stack, cmd_number)?;
@@ -28,6 +31,17 @@ pub fn runner(cmds: Vec<OpCode>) -> Result<()> {
                     let (value1, value2) = double_pop::double_pop_string(&mut stack, cmd_number)?;
                     stack.push(Value::String(value1 + value2.as_str()));
                 };
+            }
+            OpCode::Rm => {
+                if let Ok((value_1, value_2)) =
+                    double_pop::double_pop_number(&mut stack, cmd_number)
+                {
+                    stack.push(Value::Number(value_1 - value_2));
+                } else {
+                    return Err(anyhow!(
+                        "Unable to remove, in the {cmd_number}th(st, nd) instruction"
+                    ));
+                }
             }
             OpCode::Null => (),
         }

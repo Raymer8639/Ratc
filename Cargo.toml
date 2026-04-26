@@ -10,12 +10,14 @@ ravm_reader = { path = "crates/ravm_reader" }
 ra_version = { path = "crates/ra_version" }
 rac_args = { path = "crates/rac_args" }
 rac_writer = { path = "crates/rac_writer" }
+rac_reader = { path = "crates/rac_reader" }
+ravm_runner = { path = "crates/ravm_runner" }
 
-rkyv = "0.8.15"
+rkyv = { version = "0.8.16", features = ["bytecheck"] }
 anyhow = "1.0.102"
 clap = "4.6.0"
 rustyline = "18.0.0"
-rac_reader = { path = "crates/rac_reader" }
-ravm_runner = { path = "crates/ravm_runner" }
 regex = "1.12.3"
 unescape = "0.1.0"
+postcard = "1.1.3"
+serde = "1.0.228"

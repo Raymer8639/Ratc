@@ -1,9 +1,10 @@
 [package]
 name = "rac"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 
 [dependencies]
+ra_file = { workspace = true }
 rac_args = { workspace = true }
 rac_writer = { workspace = true }
 rac_reader = { workspace = true }

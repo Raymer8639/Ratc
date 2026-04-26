@@ -1,11 +1,11 @@
 [package]
 name = "ravm_reader"
-version = "0.0.1"
+version = "0.0.2"
 edition = "2024"
 
 [dependencies]
-ravm_runner = { workspace = true }
 ra_version = { workspace = true }
 ra_file = { workspace = true }
 anyhow = { workspace = true }
-rkyv = { workspace = true }
+postcard = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
