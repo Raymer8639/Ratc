@@ -1,5 +1,5 @@
 # Ratc
-Ra's Toolchain Collection
+Raymer's Toolchain Collection
 
 # Installation
 - Getting the repository
