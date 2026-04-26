@@ -11,7 +11,7 @@ ra_version = { path = "crates/ra_version" }
 rac_args = { path = "crates/rac_args" }
 rac_writer = { path = "crates/rac_writer" }
 
-rkyv = "0.8.15"
+rkyv = { version = "0.8.16", features = ["bytecheck"] }
 anyhow = "1.0.102"
 clap = "4.6.0"
 rustyline = "18.0.0"

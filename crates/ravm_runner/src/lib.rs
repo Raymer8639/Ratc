@@ -14,6 +14,9 @@ pub fn runner(cmds: Vec<OpCode>) -> Result<()> {
             OpCode::Push(value) => {
                 stack.push(value.clone());
             }
+            OpCode::Block(cmds) => {
+                runner(cmds)?;
+            }
             OpCode::Syscall => {
                 let (first_value, second_value) =
                     double_pop::double_pop_number(&mut stack, cmd_number)?;

@@ -1,8 +1,3 @@
-use std::{
-    fs::File,
-    io::{BufRead, BufReader},
-};
-
 use anyhow::Result;
 use clap::Parser;
 use rac_args::Arg;
@@ -12,6 +7,9 @@ fn main() -> Result<()> {
     let arg = Arg::parse();
 
     let output_name = arg.output_name.unwrap_or_default();
+
+    let mut skip_buffer = String::new();
+    let mut is_skiping = false;
 
     let mut line_number: usize = 0;
 
@@ -27,8 +25,19 @@ fn main() -> Result<()> {
                     if line == "____exit____" {
                         break;
                     }
-                    let lines: Vec<&str> = line.split(' ').collect();
-                    rac_reader::read_cmds(lines.clone(), &mut cmds, &mut line_number)?;
+
+                    if line.ends_with(';') || is_skiping {
+                        skip_buffer.push_str(line.as_str());
+                        line_number -= 1;
+
+                        is_skiping = !line.ends_with(';');
+
+                        continue;
+                    }
+                    let line = skip_buffer.clone() + line.as_str();
+                    skip_buffer.clear();
+                    let commands_vec: Vec<&str> = line.split(';').collect();
+                    rac_reader::read_cmds(commands_vec.clone(), &mut cmds, &mut line_number)?;
                 }
                 Err(rustyline::error::ReadlineError::Interrupted) => break,
                 Err(rustyline::error::ReadlineError::Eof) => break,
@@ -39,15 +48,14 @@ fn main() -> Result<()> {
         rac_writer::writer(&cmds, output_name)?;
     } else {
         for file in arg.files {
-            let file = File::open(file)?;
-            let reader = BufReader::new(file);
             let mut cmds = vec![];
-            for line in reader.lines() {
-                line_number += 1;
-                let line = line?;
-                let line: Vec<&str> = line.split(' ').collect();
-                rac_reader::read_cmds(line.clone(), &mut cmds, &mut line_number)?;
-            }
+            rac_reader::read::read(
+                file,
+                &mut cmds,
+                &mut line_number,
+                &mut skip_buffer,
+                &mut is_skiping,
+            )?;
             rac_writer::writer(&cmds, output_name.clone())?;
         }
     }

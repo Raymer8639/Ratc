@@ -4,6 +4,7 @@ version = "0.0.2"
 edition = "2024"
 
 [dependencies]
+ra_file = { path = "../ra_file" }
 rac_args = { workspace = true }
 rac_writer = { workspace = true }
 rac_reader = { workspace = true }
